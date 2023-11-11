@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regisztráció</title>
+    <link rel="stylesheet" href="../CSS/regisztracio.css">
+    <link rel="stylesheet" href="../CSS/navbar.css">
+</head>
+<body>
+    <nav>
+        <ul class="nav-ul">
+            <li class="nav-li" style="float: left;"><a href="index.html">Moodle</a></li>
+            <li class="nav-li"><a href="bejelentkezes.html">Bejelentkezés</a></li>
+            <li class="nav-li" style="background-color: rgb(59, 25, 255);"><a href="regisztracio.html">Regisztáció</a></li>
+            <li class="nav-li"><a href="index.html">Főoldal</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="reg-text">Regisztráció</div>
+        <hr>
+        <form class="reg-form" action="" method="post">
+            <fieldset class="reg-fieldset">
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <label for="uname">Felhasználónév:</label>    
+                    </div>
+                    
+                    <div class="grid-item">
+                        <input type="text" name="uname" placeholder="kovacsmiklos05">
+                    </div>
+
+                    <div class="grid-item">    
+                        <label for="lastname">Vezetéknév:</label>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <input type="text" name="lastname" placeholder="Kovács">
+                    </div>
+
+                    <div class="grid-item">
+                        <label for="firstname">Keresztnév:</label>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <input type="text" name="firstname" placeholder="Miklós">
+                    </div>
+
+                    <div class="grid-item">
+                        <label for="email">Email:</label>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <input type="email" name="email" placeholder="kovacsmiklos05@gmail.com">
+                    </div>
+
+                    <div class="grid-item">
+                        <label for="pw">Jelszó:</label>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <input type="password" name="pw">
+                    </div>
+
+                    <div class="grid-item">
+                        <label for="pw-again">Jelszó újra:</label>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <input type="password" name="pw-again">
+                    </div>
+                </div>      
+            </fieldset>
+
+            <input type="submit" value="Regisztálok" class="sb-btn">
+        </form>
+    </main>
+    
+    <footer>
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+}
+
+nav {
+    margin-bottom: 25px;
+    overflow: none;
+    position: sticky;
+    top: 0;
+}
+
+.nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(59, 144, 255);
+}
+
+.nav-li {
+    float: right;
+}
+
+.nav-li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 18px 18px;
+    text-decoration: none;
+
+}
+
+.nav-li a:hover {
+    background-color: rgb(59, 25, 255);
+}
