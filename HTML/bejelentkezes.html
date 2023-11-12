@@ -10,11 +10,43 @@
 <body>
     <nav>
         <ul class="nav-ul">
-            <li class="nav-li" style="float: left;"><a href="index.html">Moodle</a></li>
-            <li class="nav-li" style="background-color: rgb(59, 25, 255);"><a href="bejelentkezes.html">Bejelentkezés</a></li>
-            <li class="nav-li"><a href="regisztracio.html">Regisztáció</a></li>
-            <li class="nav-li"><a href="index.html">Főoldal</a></li>
+            <li class="nav-li" style="float: left;"><a href="index.html" style="padding: 0;"><img src="../Images/Logo.jpg" class="logo-img" alt="Logo"></a></li>
+            <li class="nav-li" style="background-color: rgb(59, 25, 255);"><a class="a" href="bejelentkezes.html">Bejelentkezés</a></li>
+            <li class="nav-li"><a class="a" href="regisztracio.html">Regisztáció</a></li>
+            <li class="nav-li"><a class="a" href="index.html">Főoldal</a></li>
         </ul>
     </nav>
+
+    <main>
+        <div id="log-text">Bejelentkezés</div>
+        <hr>
+        <form class="log-form" action="kurzusok.html" method="post">
+            <fieldset class="log-fieldset">
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <label for="uname">Felhasználónév:</label>    
+                    </div>
+                    
+                    <div class="grid-item">
+                        <input type="text" name="uname" placeholder="kovacsmiklos05">
+                    </div>
+
+                    <div class="grid-item">
+                        <label for="pw">Jelszó:</label>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <input type="password" name="pw">
+                    </div>
+                </div>      
+            </fieldset>
+
+            <input type="submit" value="Bejelentkezés" class="login-btn">
+        </form>
+    </main>
+
+    <footer>
+
+    </footer>
 </body>
 </html>

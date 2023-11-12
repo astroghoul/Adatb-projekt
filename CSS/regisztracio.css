@@ -20,16 +20,17 @@ hr {
 }
 
 input[type="text"], input[type="password"], input[type="email"] {
-    width: 175px;
+    width: 240px;
+    font-size: large;
 }
 
 .reg-form {
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 750px;
+    width: 500px;
     border: 10px rgb(74, 174, 255);
-    box-shadow: 0px 0px 20px ;
+    box-shadow: 0px 0px 20px;
     background-color: rgb(148, 148, 255);
     display: flex;
     flex-direction: column;
@@ -56,10 +57,11 @@ input[type="text"], input[type="password"], input[type="email"] {
 }
 
 .grid-item {
+    font-size: large;
     padding: 10px;
 }
 
-.sb-btn {
+.reg-btn {
     height: 40px;
     width: 120px;
     font-size: 18px;
