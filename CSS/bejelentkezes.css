@@ -38,7 +38,7 @@ input[type="text"], input[type="password"] {
 }
 
 .log-fieldset {
-    padding: 10px;
+    padding: 0px;
     border: 0;
 }
 
@@ -58,7 +58,7 @@ input[type="text"], input[type="password"] {
 
 .grid-item {
     font-size: large;
-    padding: 10px;
+    padding: 5px;
 }
 
 .login-btn {
@@ -68,6 +68,7 @@ input[type="text"], input[type="password"] {
     border-radius: 7px;
     background-color: rgb(148, 191, 255);
     border-color: rgb(34, 0, 255);
+    margin-top: 20px;
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;

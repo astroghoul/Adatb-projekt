@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +14,19 @@
 <body>
     <nav>
         <ul class="nav-ul">
-            <li class="nav-li" style="float: left;"><a href="index.html" style="padding: 0;"><img src="../Images/Logo.jpg" class="logo-img" alt="Logo"></a></li>
-            <li class="nav-li"><a class="a" href="bejelentkezes.html">Bejelentkezés</a></li>
-            <li class="nav-li"><a class="a" href="regisztracio.html">Regisztáció</a></li>
-            <li class="nav-li" style="background-color: rgb(59, 25, 255);"><a class="a" href="index.html">Főoldal</a></li>
+            <li class="nav-li" style="float: left;"><a href="index.php" style="padding: 0;"><img src="../Images/Logo.jpg" class="logo-img" alt="Logo"></a></li>
+            <?php
+            if (!isset($_SESSION["felhasznalo"])) {
+                echo '<li class="nav-li"><a class="a" href="bejelentkezes.php">Bejelentkezés</a></li>';
+            }
+            ?>
+            <?php
+            if (!isset($_SESSION["felhasznalo"])) {
+                echo '<li class="nav-li"><a class="a" href="regisztracio.php">Regisztáció</a></li><li class="nav-li"><a class="a" href="index.php">Főoldal</a></li>';
+            } else {
+                echo '<li class="nav-li"><a class="a" href="profil.php">Profil</a></li><li class="nav-li"><a class="a" href="index.php">Kurzusok</a></li>';
+            }
+            ?>
         </ul>
     </nav>
 

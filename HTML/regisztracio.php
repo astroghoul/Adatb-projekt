@@ -1,3 +1,12 @@
+<?php 
+    include "../PHP/regisztral.php";
+ 
+    session_start();
+    if (isset($_SESSION["felhasznalo"])) {
+        header("location: profil.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +19,17 @@
 <body>
     <nav>
         <ul class="nav-ul">
-            <li class="nav-li" style="float: left;"><a href="index.html" style="padding: 0;"><img src="../Images/Logo.jpg" class="logo-img" alt="Logo"></a></li>
-            <li class="nav-li"><a class="a" href="bejelentkezes.html">Bejelentkezés</a></li>
-            <li class="nav-li" style="background-color: rgb(59, 25, 255);"><a class="a" href="regisztracio.html">Regisztáció</a></li>
-            <li class="nav-li"><a class="a" href="index.html">Főoldal</a></li>
+            <li class="nav-li" style="float: left;"><a href="index.php" style="padding: 0;"><img src="../Images/Logo.jpg" class="logo-img" alt="Logo"></a></li>
+            <li class="nav-li"><a class="a" href="bejelentkezes.php">Bejelentkezés</a></li>
+            <li class="nav-li" style="background-color: rgb(59, 25, 255);"><a class="a" href="regisztracio.php">Regisztáció</a></li>
+            <li class="nav-li"><a class="a" href="index.php">Főoldal</a></li>
         </ul>
     </nav>
 
     <main>
         <div id="reg-text">Regisztráció</div>
         <hr>
-        <form class="reg-form" action="" method="post">
+        <form class="reg-form" action="regisztracio.php" method="post">
             <fieldset class="reg-fieldset">
                 <div class="grid-container">
                     <div class="grid-item">
@@ -28,7 +37,7 @@
                     </div>
                     
                     <div class="grid-item">
-                        <input type="text" name="uname" placeholder="kovacsmiklos05">
+                        <input type="text" name="uname" placeholder="kovacsmiklos05" required>
                     </div>
 
                     <div class="grid-item">    
@@ -36,7 +45,7 @@
                     </div>
                     
                     <div class="grid-item">
-                        <input type="text" name="lastname" placeholder="Kovács">
+                        <input type="text" name="lastname" placeholder="Kovács" required>
                     </div>
 
                     <div class="grid-item">
@@ -44,7 +53,7 @@
                     </div>
                     
                     <div class="grid-item">
-                        <input type="text" name="firstname" placeholder="Miklós">
+                        <input type="text" name="firstname" placeholder="Miklós" required>
                     </div>
 
                     <div class="grid-item">
@@ -52,7 +61,7 @@
                     </div>
                     
                     <div class="grid-item">
-                        <input type="email" name="email" placeholder="kovacsmiklos05@gmail.com">
+                        <input type="email" name="email" placeholder="kovacsmiklos05@gmail.com" required>
                     </div>
 
                     <div class="grid-item">
@@ -60,7 +69,7 @@
                     </div>
                     
                     <div class="grid-item">
-                        <input type="password" name="pw">
+                        <input type="password" name="pw" required>
                     </div>
 
                     <div class="grid-item">
@@ -68,12 +77,21 @@
                     </div>
                     
                     <div class="grid-item">
-                        <input type="password" name="pw-again">
+                        <input type="password" name="pw-again" required>
                     </div>
                 </div>      
             </fieldset>
+            <?php 
+                if (isset($successful) && $successful === true) {
+                    echo "<p>Sikeres regisztráció!</p>";
+                } else {
+                    foreach ($hibak as $hiba) {
+                        echo "<p style='color: red; text-align: center; margin: 0;'>" . $hiba . "</p>";
+                    }
+                }
+            ?>
 
-            <input type="submit" value="Regisztálok" class="reg-btn">
+            <input type="submit" value="Regisztálok" class="reg-btn" name="register-btn">
         </form>
     </main>
     
