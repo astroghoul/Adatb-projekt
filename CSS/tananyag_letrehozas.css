@@ -6,9 +6,28 @@ body {
     background-color: rgb(208, 208, 255);   
 }
 
-.logout-btn {
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 40px 30px 50px 30px;
+}
+
+.grid-item:nth-of-type(odd) {
+    text-align: right;
+}
+
+.grid-item:nth-of-type(even) {
+    text-align: left;
+}
+
+.grid-item {
+    font-size: large;
+    padding: 5px;
+}
+
+.tananyag-btn {
     height: 40px;
-    width: 120px;
+    width: 140px;
     font-size: 18px;
     border-radius: 7px;
     background-color: rgb(148, 191, 255);

@@ -18,29 +18,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profilom</title>
-    <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/profil.css">
+    <link rel="stylesheet" href="../CSS/navbar.css">
 </head>
 <body>
     <nav>
         <ul class="nav-ul">
             <li class="nav-li" style="float: left;"><a href="index.php" style="padding: 0;"><img src="../Images/Logo.jpg" class="logo-img" alt="Logo"></a></li>
-            <li class="nav-li" style="background-color: rgb(59, 25, 255);"><a class="a" href="profil.php">Profil</a></li>
             <?php
-            if (!isset($_SESSION["felhasznalo"])) {
-                echo '<li class="nav-li"><a class="a" href="index.php">Főoldal</a></li>';
-            } else {
-                echo '<li class="nav-li"><a class="a" href="index.php">Kurzusok</a></li>';
-            }
+                if (isset($_SESSION["felhasznalo"]) && ($_SESSION["szerepkor"] === "ROLE_ADMIN" || $_SESSION["szerepkor"] === "ROLE_TANAR")) {
+                    echo '
+                    <li class="nav-li"><a class="a" href="profil.php" style="background-color: rgb(59, 25, 255);">Profil</a></li>
+                    <li class="nav-li"><a class="a" href="kurzusaim.php">Kurzusaim</a></li>
+                    <li class="nav-li"><a class="a" href="index.php">Kurzus CRUD</a></li>
+                    <li class="nav-li"><a class="a" href="tananyag_letrehozas.php">Tananyag CRUD</a></li>';
+                } else {
+                    echo '
+                    <li class="nav-li"><a class="a" href="profil.php">Profil</a></li>
+                    <li class="nav-li"><a class="a" href="kurzusaim.php">Kurzusaim</a></li>';
+                }
             ?>
         </ul>
     </nav>
-    <p>Ez a Profilom</p>
-    <br>
-    <p><?php echo session_id();?></p>
+    <main>
+        <p style="font-size: 40px; text-align: center; margin-bottom: 16px;">Profilom</p>
+        <hr style="border-width: 1px; border-color: black; max-width: 500px;">
 
-    <form method="post" action="profil.php">
-        <input type="submit" value="Kijelentkezés" name="logout-btn">
-    </form>
+        <p style="font-size: 24px; text-align: center;">Én vagyok a(z) <?php echo $_SESSION["felhasznalo"]; ?></p>
+        <br>
+        <p style="font-size: 20px; text-align: center;">Munkamenet azonosítóm:</p>
+        <p style="font-size: 16px; text-align: center;"><?php echo session_id();?></p>
+
+        <form method="post" action="profil.php">
+            <div style="text-align: center; margin-top: 75px;">
+                <input type="submit" value="Kijelentkezés" name="logout-btn" class="logout-btn">
+            </div>    
+        </form>
+    </main>
 </body>
 </html>

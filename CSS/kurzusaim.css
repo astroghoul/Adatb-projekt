@@ -1,0 +1,41 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(208, 208, 255);
+    min-height: 120vh;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+td {
+    padding: 20px;
+    border: 2px solid black;
+}
+
+th {
+    padding: 20px;
+    border: 2px solid black;
+}
+
+.open-btn {
+    background-color: rgb(84, 84, 255);
+    color: white;
+    height: 36px;
+}
+
+.modify-btn {
+    background-color: rgb(86, 255, 94);
+    color: black;
+    height: 36px;
+}
+
+.delete-btn {
+    background-color: rgb(255, 0, 0);
+    color: black;
+    height: 36px;
+}

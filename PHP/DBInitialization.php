@@ -60,10 +60,11 @@
 
         $query = "INSERT INTO felhasznalo (felhasznalonev, email, jelszo, vezeteknev, keresztnev, szerepkor, online)
             VALUES 
-            ('b_kev03', 'b_kev03@gmail.com', '" . password_hash("kevin123", PASSWORD_DEFAULT) . "', 'Bak', 'Kevin', 'ROLE_ADMIN,', 'FALSE'),
-            ('kovacsmiklos03', 'kovmik03@gmail.com', '" . password_hash("kovmik123", PASSWORD_DEFAULT) . "', 'Kovács', 'Miklós', 'ROLE_HALLGATO,', 'FALSE'),
-            ('kisbela85', 'kbela85@gmail.com', '" . password_hash("kbela1985", PASSWORD_DEFAULT) . "', 'Kis', 'Béla', 'ROLE_TANAR,', 'FALSE'),
-            ('admin', 'admin@admin.com', '" . password_hash("admin", PASSWORD_DEFAULT) . "', 'ADMIN', 'ISZTRÁTOR', 'ROLE_ADMIN,', 'FALSE')
+            ('b_kev03', 'b_kev03@gmail.com', '" . password_hash("kevin123", PASSWORD_DEFAULT) . "', 'Bak', 'Kevin', 'ROLE_ADMIN', 'FALSE'),
+            ('kovacsmiklos03', 'kovmik03@gmail.com', '" . password_hash("kovmik123", PASSWORD_DEFAULT) . "', 'Kovács', 'Miklós', 'ROLE_HALLGATO', 'FALSE'),
+            ('feklaj03', 'feklaj03@gmail.com', '" . password_hash("feklaj123", PASSWORD_DEFAULT) . "', 'Fekete', 'Lajos', 'ROLE_HALLGATO', 'FALSE'),
+            ('kisbela85', 'kbela85@gmail.com', '" . password_hash("kbela1985", PASSWORD_DEFAULT) . "', 'Kis', 'Béla', 'ROLE_TANAR', 'FALSE'),
+            ('admin', 'admin@admin.com', '" . password_hash("admin", PASSWORD_DEFAULT) . "', 'ADMIN', 'ISZTRÁTOR', 'ROLE_ADMIN', 'FALSE')
             ";
         
         $result = $connection->query($query);
@@ -180,15 +181,31 @@
             echo "HIBA a 'kurzus' tábla létrehozása során: " . $connection->error;
         }
 
+        $query = "INSERT INTO `kurzus` (`kkod`, `knev`, `felev`, `kredit`) 
+        VALUES ('PROG1-01', 'Programozás I.', '2', '3'),
+        ('KALK-01', 'Kalkulus I.', '1', '3'),
+        ('OPKUT-01', 'Operációkutatás', '2', '2'),
+        ('ADATB-01', 'Adatbázisok', '2', '3'),
+        ('PROGALAP-01', 'Programozás Alapjai', '1', '3')
+        ";
+        
+        $result = $connection->query($query);
+        if ($result === TRUE) {
+            echo "Sikeres adatfelvétel a 'kurzus' táblába<br>";
+        } else {
+            echo "HIBA! Nem sikerült a rekordok beszúrása a 'kurzus' táblába: " . $connection->error;
+        } 
+
         // TANANYAG tábla
 
         echo "<br>TANANYAG TÁBLA<br>";
 
         $query = "CREATE TABLE tananyag (
-            tid INT NOT NULL PRIMARY KEY,
+            tid INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
             nev VARCHAR(150) NOT NULL,
-            letrehozas_datuma DATETIME NOT NULL,
+            letrehozas_datuma DATE NOT NULL,
             kkod VARCHAR(100) NOT NULL,
+            tartalom VARCHAR(65535) NOT NULL,
             felhasznalonev VARCHAR(100) NOT NULL,
             FOREIGN KEY (kkod) REFERENCES kurzus(kkod) ON DELETE CASCADE ON UPDATE CASCADE,
             FOREIGN KEY (felhasznalonev) REFERENCES felhasznalo(felhasznalonev) ON DELETE CASCADE ON UPDATE CASCADE
@@ -201,6 +218,17 @@
             echo "HIBA a 'tananyag' tábla létrehozása során: " . $connection->error;
         }
 
+        $jelenlegi_datum = date("Y-m-d");
+        $query = "INSERT INTO `tananyag` (`tid`, `nev`, `letrehozas_datuma`, `kkod`, `tartalom`, `felhasznalonev`) VALUES (NULL, 'Ismétlés', '2023-11-21', 'KALK-01', '1+1 az mindig 2', 'kisbela85'),
+        (NULL, 'A C nyelv', '$jelenlegi_datum', 'PROGALAP-01', 'A main függvény a program belépési pontja', 'kisbela85')";
+        
+        $result = $connection->query($query);
+        if ($result === TRUE) {
+            echo "Sikeres adatfelvétel a 'tananyag' táblába<br>";
+        } else {
+            echo "HIBA! Nem sikerült a rekordok beszúrása a 'tananyag' táblába: " . $connection->error;
+        }
+
         // NAPLÓ tábla
 
         echo "<br>NAPLO TÁBLA<br>";
@@ -209,11 +237,9 @@
             nid INT NOT NULL PRIMARY KEY,
             felhasznalonev VARCHAR(100) NOT NULL,
             tid INT NOT NULL,
-            kkod VARCHAR(100) NOT NULL,
             muvelet VARCHAR(100) NOT NULL,
             mikor DATETIME NOT NULL,
             eltelt_ido INT,
-            FOREIGN KEY (kkod) REFERENCES kurzus(kkod) ON DELETE CASCADE,
             FOREIGN KEY (felhasznalonev) REFERENCES felhasznalo(felhasznalonev) ON DELETE CASCADE ON UPDATE CASCADE,
             FOREIGN KEY (tid) REFERENCES tananyag(tid) ON DELETE CASCADE ON UPDATE CASCADE
             )";
@@ -225,6 +251,7 @@
             echo "HIBA a 'naplo' tábla létrehozása során: " . $connection->error;
         }
 
+        /*
         // TANÁROK_KURZUSAI tábla
 
         echo "<br>TANAROK_KURZUSAI tábla<br>";
@@ -260,6 +287,7 @@
         } else {
             echo "HIBA a 'hallgatok_kurzusai' tábla létrehozása során: " . $connection->error;
         }
+        */
         
         $connection->close();
     ?>

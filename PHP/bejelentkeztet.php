@@ -36,6 +36,7 @@
             if (isset($row["felhasznalonev"]) && $felhasznalonev === $row["felhasznalonev"] && password_verify($jelszo, $row["jelszo"])) {
                 session_start();
                 $_SESSION["felhasznalo"] = $row["felhasznalonev"];
+                $_SESSION["szerepkor"] = $row["szerepkor"];
                 $query_update = "UPDATE felhasznalo
                                 SET online = TRUE
                                 WHERE felhasznalonev = '$felhasznalonev'";
