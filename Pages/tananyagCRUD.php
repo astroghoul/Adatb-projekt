@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    include "../PHP/tananyagletrehozas.php";
+    include "../PHP/tananyagkezelo.php";
 
     if (!isset($_SESSION["felhasznalo"]) || ($_SESSION["szerepkor"] === "ROLE_HALLGATO")) {
         header("location: bejelentkezes.php");
@@ -13,8 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tananyag létrehozás</title>
-    <link rel="stylesheet" href="../CSS/tananyag_letrehozas.css">
+    <title>Tananyag CRUD</title>
+    <link rel="stylesheet" href="../CSS/tananyagCRUD.css">
     <link rel="stylesheet" href="../CSS/navbar.css">
 </head>
 <body>
@@ -23,8 +23,8 @@
         <li class="nav-li" style="float: left;"><a href="index.php" style="padding: 0;"><img src="../Images/Logo.jpg" class="logo-img" alt="Logo"></a></li>
         <li class="nav-li"><a class="a" href="profil.php">Profil</a></li>
         <li class="nav-li"><a class="a" href="kurzusaim.php">Kurzusaim</a></li>
-        <li class="nav-li"><a class="a" href="index.php">Kurzus CRUD</a></li>
-        <li class="nav-li"><a class="a" href="tananyag_letrehozas.php" style="background-color: rgb(59, 25, 255);">Tananyag CRUD</a></li>
+        <li class="nav-li"><a class="a" href="kurzusCRUD.php">Kurzus CRUD</a></li>
+        <li class="nav-li"><a class="a" href="tananyagCRUD.php" style="background-color: rgb(59, 25, 255);">Tananyag CRUD</a></li>
     </ul>
 </nav>
 
@@ -37,7 +37,7 @@
             }
         echo '
             <hr style="border-width: 1px; border-color: black; max-width: 500px;">
-            <form class="tananyag-form" action="tananyag_letrehozas.php" method="post">
+            <form class="tananyag-form" action="tananyagCRUD.php" method="post">
                 <div class="grid-container">
                     <div class="grid-item">
                         <label for="">Név:</label>    

@@ -1,5 +1,5 @@
 <?php
-    include_once "../PHP/db_functions.php";
+    include_once "db_functions.php";
 
     $connection = adatbazis_csatlakozas();
     $sikeres_tananyagletrehozas = false;

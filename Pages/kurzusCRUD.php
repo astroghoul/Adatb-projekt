@@ -1,8 +1,8 @@
 <?php
     session_start();
 
-    include "../PHP/kurzusCUD.php";
-    include "../PHP/tananyagletrehozas.php";
+    include "../PHP/kurzuskezelo.php";
+    include "../PHP/tananyagkezelo.php";
 
 ?>
 
@@ -11,8 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Főoldal</title>
-    <link rel="stylesheet" href="../CSS/index.css">
+    <title>Kurzus CRUD</title>
+    <link rel="stylesheet" href="../CSS/kurzusCRUD.css">
     <link rel="stylesheet" href="../CSS/navbar.css">
 </head>
 <body>
@@ -29,8 +29,8 @@
                     echo '
                     <li class="nav-li"><a class="a" href="profil.php">Profil</a></li>
                     <li class="nav-li"><a class="a" href="kurzusaim.php">Kurzusaim</a></li>
-                    <li class="nav-li"><a class="a" href="index.php" style="background-color: rgb(59, 25, 255);">Kurzus CRUD</a></li>
-                    <li class="nav-li"><a class="a" href="tananyag_letrehozas.php">Tananyag CRUD</a></li>';
+                    <li class="nav-li"><a class="a" href="kurzusCRUD.php" style="background-color: rgb(59, 25, 255);">Kurzus CRUD</a></li>
+                    <li class="nav-li"><a class="a" href="tananyagCRUD.php">Tananyag CRUD</a></li>';
                 } else {
                     echo '
                     <li class="nav-li"><a class="a" href="profil.php">Profil</a></li>
@@ -52,7 +52,7 @@
                 }
             echo '
                 <hr style="border-width: 1px; border-color: black; max-width: 500px;">
-                <form class="kurzus-form" action="index.php" method="post">
+                <form class="kurzus-form" action="kurzusCRUD.php" method="post">
                     <div class="grid-container">
                         <div class="grid-item">
                             <label for="kkod">Kurzuskód:</label>    
@@ -106,7 +106,7 @@
             echo '        
                 <hr style="border-width: 1px; border-color: black; max-width: 500px;">
                 
-                <form class="kurzus-modification-form" action="index.php" method="post">
+                <form class="kurzus-modification-form" action="kurzusCRUD.php" method="post">
                     <div class="grid-container">    
                         <div class="grid-item">    
                             <label for="kurzus">Melyik kurzust szeretnéd módosítani?</label>
@@ -181,7 +181,7 @@
             echo '        
                 <hr style="border-width: 1px; border-color: black; max-width: 500px;">
 
-                <form class="kurzus-delete-form" action="index.php" method="post">
+                <form class="kurzus-delete-form" action="kurzusCRUD.php" method="post">
                     <div class="grid-container">    
                         <div class="grid-item">    
                             <label for="kurzus">Melyik kurzust szeretnéd törölni?</label>

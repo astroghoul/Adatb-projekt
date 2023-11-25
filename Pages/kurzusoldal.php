@@ -31,8 +31,8 @@
                     echo '
                     <li class="nav-li"><a class="a" href="profil.php">Profil</a></li>
                     <li class="nav-li"><a class="a" href="kurzusaim.php">Kurzusaim</a></li>
-                    <li class="nav-li"><a class="a" href="index.php">Kurzus CRUD</a></li>
-                    <li class="nav-li"><a class="a" href="tananyag_letrehozas.php">Tananyag CRUD</a></li>';
+                    <li class="nav-li"><a class="a" href="kurzusCRUD.php">Kurzus CRUD</a></li>
+                    <li class="nav-li"><a class="a" href="tananyagCRUD.php">Tananyag CRUD</a></li>';
                 } else {
                     echo '
                     <li class="nav-li"><a class="a" href="profil.php">Profil</a></li>
@@ -158,11 +158,50 @@
                         VALUES ('$felhasznalo', '$tid', 'bezar', '$jelenlegi_datetime', '$uj_eltelt_ido')";
                         $result = $connection->query($query);
                     }
-
-                    // $query = "SELECT COUNT(DISTINCT tid) AS megnyitott_kurzusok FROM naplo WHERE"
                 ?>
             </table>
         </div>
+
+            <?php 
+            
+                // összes kurzus megszámolása
+
+                $query = "SELECT COUNT(DISTINCT tid) AS osszes_tananyag FROM tananyag WHERE kkod = '$kkod'";
+                $result = $connection->query($query);
+                $row = $result->fetch_assoc();
+                $osszes_tananyagok_szama = $row["osszes_tananyag"];
+
+                // felhasználókra lebontva a megtekintett tananyagok
+
+                if (isset($_SESSION["felhasznalo"]) && ($_SESSION["szerepkor"] === "ROLE_ADMIN" || $_SESSION["szerepkor"] === "ROLE_TANAR")) {
+                    echo '
+                    <p class="home" style="font-size: 32px; text-align: center; margin-bottom: 20px;">Hallgatói statisztikák erre a kurzusra</p>
+                    <hr style="width: 600px; border-color: black;">   
+                    <div style="display: block; text-align: center; margin-top: 36px;">
+                    ';
+                    $query = "SELECT felhasznalonev FROM felhasznalo WHERE szerepkor = 'ROLE_HALLGATO'";
+                    $result = $connection->query($query);
+                    while ($row = $result->fetch_assoc()) {
+                        $felhasznalonev = $row["felhasznalonev"];
+                        
+                        $query_mt = "SELECT COUNT(DISTINCT tid) AS megnyitott_tananyagok 
+                        FROM (
+                            SELECT naplo.tid 
+                            FROM tananyag 
+                            INNER JOIN naplo 
+                            ON tananyag.tid = naplo.tid
+                            WHERE kkod = '$kkod' 
+                            AND naplo.felhasznalonev = '$felhasznalonev'
+                            ) AS lekerdezes";
+                        $result_mt = $connection->query($query_mt);
+
+                        $row = $result_mt->fetch_assoc();
+                        $megnyitott_tananyagok_szama = $row["megnyitott_tananyagok"];
+                        echo "<p>" . $felhasznalonev . " által megnyitott tananyagok száma: " . $megnyitott_tananyagok_szama . "/" . $osszes_tananyagok_szama . "</p>";
+                    }
+                    echo "</div";   
+                }
+            ?>
     </main>    
 </body>
 </html>

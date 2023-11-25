@@ -1,0 +1,82 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(208, 208, 255);   
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 40px 30px 50px 30px;
+}
+
+.grid-item:nth-of-type(odd) {
+    text-align: right;
+}
+
+.grid-item:nth-of-type(even) {
+    text-align: left;
+}
+
+.grid-item {
+    font-size: large;
+    padding: 5px;
+}
+
+.kurzus-btn {
+    height: 40px;
+    width: 140px;
+    font-size: 18px;
+    border-radius: 7px;
+    background-color: rgb(148, 191, 255);
+    border-color: rgb(34, 0, 255);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.tananyag-btn {
+    height: 40px;
+    width: 140px;
+    font-size: 18px;
+    border-radius: 7px;
+    background-color: rgb(148, 191, 255);
+    border-color: rgb(34, 0, 255);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.kurzus-update-btn {
+    height: 40px;
+    width: 140px;
+    font-size: 18px;
+    border-radius: 7px;
+    background-color: rgb(148, 191, 255);
+    border-color: rgb(34, 0, 255);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.kurzus-del-btn {
+    height: 40px;
+    width: 140px;
+    font-size: 18px;
+    border-radius: 7px;
+    background-color: rgb(148, 191, 255);
+    border-color: rgb(34, 0, 255);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}

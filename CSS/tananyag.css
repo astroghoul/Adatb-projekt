@@ -5,3 +5,7 @@
 body {
     background-color: rgb(208, 208, 255);   
 }
+
+a:visited {
+    color: blue;
+}
