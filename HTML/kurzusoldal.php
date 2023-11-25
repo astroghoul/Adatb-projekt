@@ -96,14 +96,27 @@
                             $mikor = $sor["mikor"];
                         }
 
+                        $torles_gomb = '<td style="border: 0px;"><a href="kurzusoldal.php?id='. $kkod .'&deleteid='. $tid .'">Törlés</a></td>';
+
                         echo '
                         <tr>
                             <td>' . $nev . '</td>
                             <td>' . $letrehozo . '</td>
                             <td>' . $letrehozas_datuma . '</td>
                             <td>' . $mikor . '</td>
-                            <td style="border: 0px;"><a href="tananyag.php?id='. $tid .'">Megnyitás</a></td>
-                        </tr>';
+                            <td style="border: 0px;"><a href="tananyag.php?id='. $tid .'">Megnyitás</a></td>' . 
+                                (($_SESSION["szerepkor"] === "ROLE_ADMIN" || $_SESSION["szerepkor"] == "ROLE_TANAR") ? $torles_gomb : '') .
+                        '</tr>';
+                    }
+
+                    // tananyag törlése
+
+                    if (isset($_GET["deleteid"])) {
+                        $deleted_tid = $_GET["deleteid"];
+
+                        $query = "DELETE FROM tananyag WHERE tid = '$deleted_tid'";
+                        $result = $connection->query($query);
+                        header("Location: kurzusoldal.php?id=" . $kkod);
                     }
 
                     // ha egy tananyag bezárásával jutottunk ide (GET), akkor naplózzuk a bezárást

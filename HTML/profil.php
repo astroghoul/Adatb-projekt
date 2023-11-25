@@ -44,14 +44,57 @@
     <main>
         <p style="font-size: 40px; text-align: center; margin-bottom: 16px;">Profilom</p>
         <hr style="border-width: 1px; border-color: black; max-width: 500px;">
+        
+        <?php 
+            // felhasználó adatainak lekérése
 
-        <p style="font-size: 24px; text-align: center;">Én vagyok a(z) <?php echo $_SESSION["felhasznalo"]; ?></p>
+            $connection = adatbazis_csatlakozas();
+            
+            $felhasznalo = $_SESSION["felhasznalo"];
+            $query = "SELECT email, vezeteknev, keresztnev FROM felhasznalo WHERE felhasznalonev = '$felhasznalo'";
+            $result = $connection->query($query);
+            $row = $result->fetch_assoc();
+            $email = $row["email"];
+            $vezeteknev = $row["vezeteknev"];
+            $keresztnev = $row["keresztnev"];
+        ?>
+
+        <div class="grid-container">
+            <div class="grid-item">
+                Felhasználónév:    
+            </div>
+            
+            <div class="grid-item">
+                <?php echo $felhasznalo; ?>
+            </div>
+            
+            <div class="grid-item">
+                Email:
+            </div>
+
+            <div class="grid-item">
+                <?php echo $email; ?>
+            </div>
+
+            <div class="grid-item">    
+                Vezetéknév:
+            </div>
+            
+            <div class="grid-item">
+                <?php echo $vezeteknev; ?>
+            </div>
+
+            <div class="grid-item">
+                Keresztnév:
+            </div>
+            
+            <div class="grid-item">
+                <?php echo $keresztnev; ?>
+            </div>
+        </div>
         <br>
-        <p style="font-size: 20px; text-align: center;">Munkamenet azonosítóm:</p>
-        <p style="font-size: 16px; text-align: center;"><?php echo session_id();?></p>
-
         <form method="post" action="profil.php">
-            <div style="text-align: center; margin-top: 75px;">
+            <div style="text-align: center;">
                 <input type="submit" value="Kijelentkezés" name="logout-btn" class="logout-btn">
             </div>    
         </form>

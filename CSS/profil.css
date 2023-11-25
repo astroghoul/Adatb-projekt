@@ -19,3 +19,22 @@ body {
     margin-right: auto;
     cursor: pointer;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 40px 30px 50px 30px;
+}
+
+.grid-item:nth-of-type(odd) {
+    text-align: right;
+}
+
+.grid-item:nth-of-type(even) {
+    text-align: left;
+}
+
+.grid-item {
+    font-size: large;
+    padding: 5px;
+}
