@@ -219,8 +219,9 @@
         }
 
         $jelenlegi_datum = date("Y-m-d");
-        $query = "INSERT INTO `tananyag` (`tid`, `nev`, `letrehozas_datuma`, `kkod`, `tartalom`, `felhasznalonev`) VALUES (NULL, 'Ismétlés', '2023-11-21', 'KALK-01', '1+1 az mindig 2', 'kisbela85'),
-        (NULL, 'A C nyelv', '$jelenlegi_datum', 'PROGALAP-01', 'A main függvény a program belépési pontja', 'kisbela85')";
+        $query = "INSERT INTO `tananyag` (`nev`, `letrehozas_datuma`, `kkod`, `tartalom`, `felhasznalonev`) VALUES ('Ismétlés', '2023-11-21', 'KALK-01', '1+1 az mindig 2', 'kisbela85'),
+        ('A C nyelv', '$jelenlegi_datum', 'PROGALAP-01', 'A main függvény a program belépési pontja', 'kisbela85'),
+        ('Pointerek', '$jelenlegi_datum', 'PROGALAP-01', 'A pointerek jelölése: *p...', 'kisbela85')";
         
         $result = $connection->query($query);
         if ($result === TRUE) {
@@ -234,7 +235,7 @@
         echo "<br>NAPLO TÁBLA<br>";
 
         $query = "CREATE TABLE naplo (
-            nid INT NOT NULL PRIMARY KEY,
+            nid INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
             felhasznalonev VARCHAR(100) NOT NULL,
             tid INT NOT NULL,
             muvelet VARCHAR(100) NOT NULL,

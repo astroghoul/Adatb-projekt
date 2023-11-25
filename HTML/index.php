@@ -33,9 +33,9 @@
                     <li class="nav-li"><a class="a" href="tananyag_letrehozas.php">Tananyag CRUD</a></li>';
                 } else {
                     echo '
-                    <li class="nav-li"><a class="a" href="index.php">Főoldal</a></li>
                     <li class="nav-li"><a class="a" href="profil.php">Profil</a></li>
-                    <li class="nav-li"><a class="a" href="kurzusaim.php">Kurzusaim</a></li>';
+                    <li class="nav-li"><a class="a" href="kurzusaim.php">Kurzusaim</a></li>
+                    <li class="nav-li"><a class="a" href="index.php" style="background-color: rgb(59, 25, 255);">Főoldal</a></li>';
                 }
             ?>
         </ul>
@@ -218,7 +218,7 @@
                 <hr style="width: 750px; border-color: black;">
                 <div class="welcome-text">
                     <p style="margin: 0;">
-                        Üdvözlünk a ... oldalán!
+                        Üdvözlünk itt!
                     </p>
                     <p>
                         Ezen az oldalon különböző kurzusokat végezhetsz el a hozzá kapcsolódó tananyagok elsajátításával.

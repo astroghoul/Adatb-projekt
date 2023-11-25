@@ -34,8 +34,9 @@
                     <li class="nav-li"><a class="a" href="tananyag_letrehozas.php">Tananyag CRUD</a></li>';
                 } else {
                     echo '
-                    <li class="nav-li"><a class="a" href="profil.php">Profil</a></li>
-                    <li class="nav-li"><a class="a" href="kurzusaim.php">Kurzusaim</a></li>';
+                    <li class="nav-li"><a class="a" href="profil.php" style="background-color: rgb(59, 25, 255);">Profil</a></li>
+                    <li class="nav-li"><a class="a" href="kurzusaim.php">Kurzusaim</a></li>
+                    <li class="nav-li"><a class="a" href="index.php">Főoldal</a></li>';
                 }
             ?>
         </ul>

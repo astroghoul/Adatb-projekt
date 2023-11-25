@@ -29,9 +29,9 @@
                     <li class="nav-li"><a class="a" href="tananyag_letrehozas.php">Tananyag CRUD</a></li>';
                 } else {
                     echo '
-                    <li class="nav-li"><a class="a" href="index.php">Főoldal</a></li>
                     <li class="nav-li"><a class="a" href="profil.php">Profil</a></li>
-                    <li class="nav-li"><a class="a" href="kurzusaim.php" style="background-color: rgb(59, 25, 255);>Kurzusaim</a></li>';
+                    <li class="nav-li"><a class="a" href="kurzusaim.php" style="background-color: rgb(59, 25, 255)";>Kurzusaim</a></li>
+                    <li class="nav-li"><a class="a" href="index.php">Főoldal</a></li>';
                 }
             ?>
         </ul>
@@ -66,8 +66,8 @@
                             <td>' . $knev . '</td>
                             <td>' . $felev . '</td>
                             <td>' . $kredit . '</td>
-                            <td style="border: 0px;"><form method="post"><input type="submit" class="open-btn" name=' . $kkod . ' value="Megnyitás"></form></td>';
-                        '</tr>';
+                            <td style="border: 0px;"><a href="kurzusoldal.php?id=' . $kkod . '">Megnyitás</a></td>
+                        </tr>';
                     }
                 ?>
             </table>
