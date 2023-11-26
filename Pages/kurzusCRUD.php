@@ -127,6 +127,8 @@
                                 } else {
                                     echo "Nincsenek még kurzusok!";
                                 }
+
+                                $connection->close();
                 echo '                    
                             </select>
                         </div>    
@@ -202,6 +204,8 @@
                                 } else {
                                     echo "Nincsenek még kurzusok!";
                                 }
+                                
+                                $connection->close();
             echo '                    
                             </select>
                         </div> 

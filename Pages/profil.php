@@ -57,6 +57,8 @@
             $email = $row["email"];
             $vezeteknev = $row["vezeteknev"];
             $keresztnev = $row["keresztnev"];
+
+            $connection->close();
         ?>
 
         <div class="grid-container">

@@ -199,8 +199,46 @@
                         $megnyitott_tananyagok_szama = $row["megnyitott_tananyagok"];
                         echo "<p>" . $felhasznalonev . " által megnyitott tananyagok száma: " . $megnyitott_tananyagok_szama . "/" . $osszes_tananyagok_szama . "</p>";
                     }
-                    echo "</div";   
+                    echo "</div>
+                    <hr style='width: 600px; border-color: black;'> ";
+
+                    $query = "SELECT felhasznalonev FROM felhasznalo WHERE szerepkor = 'ROLE_HALLGATO'";
+                    $result = $connection->query($query);
+                    while ($row = $result->fetch_assoc()) {
+                        $felhasznalonev = $row["felhasznalonev"];
+
+                        $query_tid = "SELECT DISTINCT tid FROM 
+                        (SELECT naplo.tid FROM tananyag, naplo 
+                        WHERE naplo.tid = tananyag.tid 
+                        AND kkod = '$kkod' 
+                        AND naplo.felhasznalonev = '$felhasznalonev') AS lekerdezes";
+                        $result_tid = $connection->query($query_tid);
+
+                        while ($row = $result_tid->fetch_assoc()) {
+                            $current_tid = $row["tid"];
+                            
+                            $query_elteltido = "SELECT eltelt_ido 
+                                FROM naplo, tananyag 
+                                WHERE naplo.felhasznalonev = '$felhasznalonev' 
+                                AND kkod = '$kkod' 
+                                AND naplo.tid = '$current_tid' 
+                                ORDER BY naplo.eltelt_ido DESC";
+                            $result_elteltido = $connection->query($query_elteltido);
+                            $row = $result_elteltido->fetch_assoc();
+                            $eltelt_ido = $row["eltelt_ido"];
+
+                            $query_nev = "SELECT nev FROM tananyag WHERE tid = '$current_tid'";
+                            $result_nev = $connection->query($query_nev);
+                            $row2 = $result_nev->fetch_assoc();
+                            $nev = $row2["nev"];
+                            echo "<div style='display: block; text-align: center; margin-top: 36px;'><p>" . $felhasznalonev . " által 
+                            a(z) '" . $nev . "' nevű tananyagon eltöltött idő: " . intdiv($eltelt_ido, 3600) . " óra " . $eltelt_ido / 60 % 60 . " perc " . $eltelt_ido % 60 . " másodperc.</p></div>";
+                        }    
+                    }
                 }
+                echo "<hr style='width: 600px; border-color: black;'>";
+                
+                $connection->close();
             ?>
     </main>    
 </body>

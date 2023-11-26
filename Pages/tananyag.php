@@ -142,6 +142,7 @@
                     $result_insert = $connection->query($query_insert);
                 }
                 
+                $connection->close();
             ?>
         </div>        
     </main>

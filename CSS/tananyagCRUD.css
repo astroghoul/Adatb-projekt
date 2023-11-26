@@ -38,3 +38,17 @@ body {
     margin-right: auto;
     cursor: pointer;
 }
+
+.tananyag-mod-btn {
+    height: 40px;
+    width: 140px;
+    font-size: 18px;
+    border-radius: 7px;
+    background-color: rgb(148, 191, 255);
+    border-color: rgb(34, 0, 255);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}

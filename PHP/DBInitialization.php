@@ -72,96 +72,7 @@
             echo "Sikeres adatfelvétel a 'felhasznalo' táblába<br>";
         } else {
             echo "HIBA! Nem sikerült a rekordok beszúrása a 'felhasználo' táblába: " . $connection->error;
-        } 
-        
-        /*
-        // ADMIN, TANAR, HALLGATO táblák létrehozása
-        
-        // ADMIN
-
-        echo "<br>ADMIN TÁBLA<br>";
-
-        $query = "CREATE TABLE admin (
-            felhasznalonev VARCHAR(100) NOT NULL PRIMARY KEY,
-            FOREIGN KEY (felhasznalonev) REFERENCES felhasznalo(felhasznalonev) ON DELETE CASCADE ON UPDATE CASCADE
-        )";
-
-        $result = $connection->query($query);
-        if ($result === TRUE) {
-            echo "'admin' tábla sikeresen létrehozva<br>";
-        } else {
-            echo "HIBA az 'admin' tábla létrehozása során: " . $connection->error;
         }
-
-        $query = "INSERT INTO admin (felhasznalonev)
-            VALUES 
-            ('b_kev03'),
-            ('admin')
-            ";
-        
-        $result = $connection->query($query);
-        if ($result === TRUE) {
-            echo "Sikeres adatfelvétel az 'admin' táblába<br>";
-        } else {
-            echo "HIBA! Nem sikerült a rekordok beszúrása az 'admin' táblába: " . $connection->error;
-        } 
-
-        // TANAR
-
-        echo "<br>TANAR TÁBLA<br>";
-
-        $query = "CREATE TABLE tanar (
-            felhasznalonev VARCHAR(100) NOT NULL PRIMARY KEY,
-            FOREIGN KEY (felhasznalonev) REFERENCES felhasznalo(felhasznalonev) ON DELETE CASCADE ON UPDATE CASCADE
-        )";
-
-        $result = $connection->query($query);
-        if ($result === TRUE) {
-            echo "'tanar' tábla sikeresen létrehozva<br>";
-        } else {
-            echo "HIBA a 'tanar' tábla létrehozása során: " . $connection->error;
-        }
-
-        $query = "INSERT INTO tanar (felhasznalonev)
-            VALUES 
-            ('kisbela85')
-            ";
-        
-        $result = $connection->query($query);
-        if ($result === TRUE) {
-            echo "Sikeres adatfelvétel a 'tanar' táblába<br>";
-        } else {
-            echo "HIBA! Nem sikerült a rekordok beszúrása a 'tanar' táblába: " . $connection->error;
-        } 
-
-        // HALLGATO
-
-        echo "<br>HALLGATO TÁBLA<br>";
-
-        $query = "CREATE TABLE hallgato (
-            felhasznalonev VARCHAR(100) NOT NULL PRIMARY KEY,
-            FOREIGN KEY (felhasznalonev) REFERENCES felhasznalo(felhasznalonev) ON DELETE CASCADE ON UPDATE CASCADE
-        )";
-
-        $result = $connection->query($query);
-        if ($result === TRUE) {
-            echo "'hallgato' tábla sikeresen létrehozva<br>";
-        } else {
-            echo "HIBA a 'hallgato' tábla létrehozása során: " . $connection->error;
-        }
-
-        $query = "INSERT INTO hallgato (felhasznalonev)
-            VALUES
-            ('kovacsmiklos03')
-            ";
-        
-        $result = $connection->query($query);
-        if ($result === TRUE) {
-            echo "Sikeres adatfelvétel a 'hallgato' táblába<br>";
-        } else {
-            echo "HIBA! Nem sikerült a rekordok beszúrása a 'hallgato' táblába: " . $connection->error;
-        }
-        */
         
         // KURZUS tábla
 
@@ -251,44 +162,6 @@
         } else {
             echo "HIBA a 'naplo' tábla létrehozása során: " . $connection->error;
         }
-
-        /*
-        // TANÁROK_KURZUSAI tábla
-
-        echo "<br>TANAROK_KURZUSAI tábla<br>";
-
-        $query = "CREATE TABLE tanarok_kurzusai (
-            felhasznalonev VARCHAR(100) NOT NULL,
-            kkod VARCHAR(100) NOT NULL, 
-            FOREIGN KEY (felhasznalonev) REFERENCES felhasznalo(felhasznalonev) ON DELETE CASCADE ON UPDATE CASCADE,
-            FOREIGN KEY (kkod) REFERENCES kurzus(kkod) ON DELETE CASCADE ON UPDATE CASCADE
-        )";
-
-        $result = $connection->query($query);
-        if ($result === TRUE) {
-            echo "'tanarok_kurzusai' tábla sikeresen létrehozva<br>";
-        } else {
-            echo "HIBA a 'tanarok_kurzusai' tábla létrehozása során: " . $connection->error;
-        }
-
-        // HALLGATÓK_KURZUSAI tábla
-
-        echo "<br>HALLGATOK_KURZUSAI tábla<br>";
-
-        $query = "CREATE TABLE hallgatok_kurzusai (
-            felhasznalonev VARCHAR(100) NOT NULL,
-            kkod VARCHAR(100) NOT NULL, 
-            FOREIGN KEY (felhasznalonev) REFERENCES felhasznalo(felhasznalonev) ON DELETE CASCADE ON UPDATE CASCADE,
-            FOREIGN KEY (kkod) REFERENCES kurzus(kkod) ON DELETE CASCADE ON UPDATE CASCADE
-        )";
-
-        $result = $connection->query($query);
-        if ($result === TRUE) {
-            echo "'hallgatok_kurzusai' tábla sikeresen létrehozva<br>";
-        } else {
-            echo "HIBA a 'hallgatok_kurzusai' tábla létrehozása során: " . $connection->error;
-        }
-        */
         
         $connection->close();
     ?>

@@ -69,6 +69,8 @@
                             <td style="border: 0px;"><a href="kurzusoldal.php?id=' . $kkod . '">Megnyitás</a></td>
                         </tr>';
                     }
+
+                    $connection->close();
                 ?>
             </table>
         </div>

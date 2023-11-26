@@ -3,6 +3,8 @@
 
     $connection = adatbazis_csatlakozas();
     $sikeres_tananyagletrehozas = false;
+    $sikeres_tananyagmodositas = false;
+
     if (isset($_POST["tananyag-btn"])) {
         $nev = $_POST["nev"];
         $kkod = $_POST["kurzusnev"];
@@ -15,6 +17,25 @@
     
         $result = $connection->query($query);
         $sikeres_tananyagletrehozas = true;
+    }
+
+    if (isset($_POST["tananyag-mod-btn"])) {
+        $ujnev = $_POST["ujnev"];
+        $modositando_tid = $_POST["tananyagid"];
+        $ujtartalom = $_POST["ujtartalom"];
+
+        $current_date = date("Y-m-d");
+        $current_user = $_SESSION["felhasznalo"];
+
+        $query = "UPDATE tananyag 
+        SET nev = '$ujnev',
+            letrehozas_datuma = '$current_date',
+            tartalom = '$ujtartalom',
+            felhasznalonev = '$current_user'
+        WHERE tid = '$modositando_tid'";
+
+        $result = $connection->query($query);
+        $sikeres_tananyagmodositas = true;
     }
     
     $connection->close();
