@@ -192,7 +192,7 @@
                             ON tananyag.tid = naplo.tid
                             WHERE kkod = '$kkod' 
                             AND naplo.felhasznalonev = '$felhasznalonev'
-                            ) AS lekerdezes";
+                            ) AS allekerdezes";
                         $result_mt = $connection->query($query_mt);
 
                         $row = $result_mt->fetch_assoc();
@@ -211,7 +211,7 @@
                         (SELECT naplo.tid FROM tananyag, naplo 
                         WHERE naplo.tid = tananyag.tid 
                         AND kkod = '$kkod' 
-                        AND naplo.felhasznalonev = '$felhasznalonev') AS lekerdezes";
+                        AND naplo.felhasznalonev = '$felhasznalonev') AS allekerdezes";
                         $result_tid = $connection->query($query_tid);
 
                         while ($row = $result_tid->fetch_assoc()) {
@@ -235,8 +235,9 @@
                             a(z) '" . $nev . "' nevű tananyagon eltöltött idő: " . intdiv($eltelt_ido, 3600) . " óra " . $eltelt_ido / 60 % 60 . " perc " . $eltelt_ido % 60 . " másodperc.</p></div>";
                         }    
                     }
+
+                    echo "<hr style='width: 600px; border-color: black;'>";
                 }
-                echo "<hr style='width: 600px; border-color: black;'>";
                 
                 $connection->close();
             ?>
