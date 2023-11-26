@@ -4,6 +4,9 @@
     include "../PHP/kurzuskezelo.php";
     include "../PHP/tananyagkezelo.php";
 
+    if (!isset($_SESSION["felhasznalo"]) || ($_SESSION["szerepkor"] === "ROLE_HALLGATO")) {
+        header("location: bejelentkezes.php");
+    }
 ?>
 
 <!DOCTYPE html>
