@@ -1,5 +1,5 @@
 # Databases compulsory program
-This project was made during my studies as a Computer Science student at the University of Szeged as a compulsury program for the course named "Databases".
+This project was made during my studies as a Computer Science student at the University of Szeged as a compulsory program for the course named "Databases".
 
 The goal with this project was to acquire essential knowledge in the field of databases, moreover, to make a program where teachers can upload learning materials for students. The requirements were known in advance. It was made with MySQL DBMS.
 
